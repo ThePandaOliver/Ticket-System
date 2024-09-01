@@ -1,5 +1,12 @@
 export interface Ticket {
 	id: number;
 	title: string;
-	description: string;
+	status: "OPEN" | "CLOSED";
+	messages: Message[];
+}
+
+export interface Message {
+	id: number;
+	content: string;
+	createdAt: string;
 }

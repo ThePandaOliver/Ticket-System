@@ -1,5 +1,6 @@
 package me.pandadev.backend.controllers;
 
+import me.pandadev.backend.entities.Message;
 import me.pandadev.backend.entities.Ticket;
 import me.pandadev.backend.services.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,4 +43,24 @@ public class TicketController {
         ticketService.deleteTicket(id);
         return ResponseEntity.noContent().build();
     }
+
+	@PostMapping("/{ticketId}/messages")
+	public ResponseEntity<Message> addMessageToTicket(@PathVariable Long ticketId, @RequestBody Message message) {
+		try {
+			Message savedMessage = ticketService.addMessageToTicket(ticketId, message);
+			return ResponseEntity.ok(savedMessage);
+		} catch (IllegalArgumentException e) {
+			return ResponseEntity.notFound().build();
+		}
+	}
+
+	@GetMapping("/{ticketId}/messages")
+	public ResponseEntity<List<Message>> getMessagesForTicket(@PathVariable Long ticketId) {
+		try {
+			List<Message> messages = ticketService.getMessagesForTicket(ticketId);
+			return ResponseEntity.ok(messages);
+		} catch (IllegalArgumentException e) {
+			return ResponseEntity.notFound().build();
+		}
+	}
 }

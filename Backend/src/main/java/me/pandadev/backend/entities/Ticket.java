@@ -1,18 +1,23 @@
 package me.pandadev.backend.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Ticket {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	private String title;
-	private String description;
+	private Status status;
+
+	@OneToMany(mappedBy = "ticket", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonManagedReference
+	private List<Message> messages = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -30,11 +35,24 @@ public class Ticket {
 		this.title = title;
 	}
 
-	public String getDescription() {
-		return description;
+	public Status getStatus() {
+		return status;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+	public List<Message> getMessages() {
+		return messages;
+	}
+
+	public void setMessages(List<Message> messages) {
+		this.messages = messages;
+	}
+
+	public enum Status {
+		OPEN,
+		CLOSED,a
 	}
 }
