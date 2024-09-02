@@ -3,6 +3,8 @@ import {Link, useNavigate, useSearchParams} from "react-router-dom";
 import {API} from "../../api/API.ts";
 import {Ticket} from "../../api/models/Ticket.ts";
 import {Spinner} from "../../components/Spinner.tsx";
+import {Main} from "../../Main.tsx";
+import "../../style/sites/TicketSelectionSite.less"
 
 export function TicketSelectionSite() {
 	const [searchParams] = useSearchParams();
@@ -20,8 +22,13 @@ export function TicketSelectionSite() {
 			.catch(() => navigation("/NoPage"))
 			.finally(() => setLoading(false));
     }, [ticketStatus]);
+
+	useEffect(() => {
+		document.title = Main.makePageName("Tickets");
+	}, [])
+
 	return (
-        <React.Fragment>
+        <div className="page">
 			<div className="panel" style={{width:"auto", padding:"5px", margin:"20px", gap:".5rem"}}>
 				<Link to="?ticketStatus=all" className="button">All</Link>
 				<Link to="?ticketStatus=open" className="button">Open</Link>
@@ -34,7 +41,7 @@ export function TicketSelectionSite() {
 				) :
 				tickets.map((ticket: Ticket) => (createTicketEntry(ticket)))
 			}
-        </React.Fragment>
+        </div>
     );
 }
 

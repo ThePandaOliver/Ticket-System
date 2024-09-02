@@ -1,14 +1,14 @@
-import {Link, Outlet} from "react-router-dom";
-import "./style/Layout.css"
+import {NavLink, Outlet} from "react-router-dom";
+import "./style/Layout.less"
 import React from "react";
 
 export function Layout() {
 	return (
 		<React.Fragment>
-			<div className="navigationPanel">
-				<Link to="/" className="button">Home</Link>
-				<Link to="/tickets" className="button">Tickets</Link>
-			</div>
+			<nav className="navigationPanel">
+				<NavLink to="/" className="button navigationButton">Home</NavLink>
+				<NavLink to="/tickets" className="button navigationButton">Tickets</NavLink>
+			</nav>
 			<Outlet />
 		</React.Fragment>
 	)

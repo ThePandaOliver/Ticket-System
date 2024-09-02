@@ -1,6 +1,6 @@
-import { StrictMode } from 'react'
+import {StrictMode} from 'react'
 import { createRoot } from 'react-dom/client'
-import './style/index.css'
+import './style/index.less'
 import {Layout} from "./Layout.tsx";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {TicketSite} from "./sites/ticket/TicketSite.tsx";
@@ -22,3 +22,12 @@ createRoot(document.getElementById('root')!).render(
 	  </BrowserRouter>
   </StrictMode>,
 )
+
+
+export class Main {
+	public static SITE_NAME = "Ticket System"
+
+	public static makePageName(pageName: string) {
+		return `${pageName} | ${this.SITE_NAME}`
+	}
+}
