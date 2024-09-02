@@ -4,6 +4,7 @@ import {Message, Ticket} from "../../api/models/Ticket.ts";
 import {API} from "../../api/API.ts";
 import {Spinner} from "../../components/Spinner.tsx";
 import {format} from "date-fns";
+import "../../style/sites/TicketSite.css"
 
 export function TicketSite() {
 	const { ticketId } = useParams();
@@ -32,13 +33,19 @@ export function TicketSite() {
 	}
 
 	return (
-        <div>
-			<div className="panel" style={{margin:"30px", padding:"0 20px", display:"flex"}}>
+        <div className="page">
+			<div className="panel" style={{padding:"0 20px"}}>
 				<h2>{ticket?.title}</h2>
 			</div>
-			{
-				ticket?.messages.map((message) => (createMessage(message)))
-			}
+			<div id="messageContainer">
+				{
+					ticket?.messages.map((message) => (createMessage(message)))
+				}
+			</div>
+			<div id="replyContainer">
+				<input id="replyInput" type="text" placeholder="Reply message..." />
+				<button>Reply</button>
+			</div>
         </div>
     );
 }
@@ -46,7 +53,7 @@ export function TicketSite() {
 function createMessage(message: Message) {
 	const date = new Date(message.createdAt);
 	return (
-		<div className="panel" style={{margin:"20px 30px", padding:"0 20px", display:"flex"}}>
+		<div className="panel" style={{padding:"0 20px", height:"100px"}}>
 			<p>{message.content}</p>
 			<p style={{marginLeft:"auto", marginTop:"auto"}}>{format(date, "PPpp")}</p>
 		</div>
