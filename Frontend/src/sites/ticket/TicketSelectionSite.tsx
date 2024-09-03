@@ -53,7 +53,6 @@ function createTicketEntry(ticket: Ticket) {
 					<h3>{ticket.title}</h3>
 					<p style={{marginLeft:"auto"}}>ID: {ticket.id}</p>
 				</div>
-                <p>{ticket.messages[0].content}</p>
             </div >
 		</Link>
 	)

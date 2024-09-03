@@ -6,6 +6,8 @@ import {Spinner} from "../../components/Spinner.tsx";
 import {format} from "date-fns";
 import "../../style/sites/TicketSite.less"
 import {Main} from "../../Main.tsx";
+import {TextArea} from "../../components/TextArea.tsx";
+import {Markdown} from "../../components/Markdown.tsx";
 
 export function TicketSite() {
 	const {ticketId} = useParams();
@@ -50,8 +52,8 @@ export function TicketSite() {
 					}
 				</div>
 				<div id="replyContainer">
-					<input id="replyInput" type="text" placeholder="Reply message..." />
-					<button>Reply</button>
+					<TextArea id="replyInput" placeholder="Reply message..." style={{width:"100%"}} />
+					<button style={{width:"100px", marginLeft:"auto"}}>Reply</button>
 				</div>
 			</div>
 
@@ -65,8 +67,10 @@ export function TicketSite() {
 function createMessage(message: Message) {
 	const date = new Date(message.createdAt);
 	return (
-		<div key={message.id} className="panel" style={{padding:"0 20px", height:"100px"}}>
-			<p>{message.content}</p>
+		<div key={message.id} className="panel" style={{display:"flex", flexDirection:"column", padding:"0 20px"}}>
+			<Markdown>
+				{message.content}
+			</Markdown>
 			<p style={{marginLeft:"auto", marginTop:"auto"}}>{format(date, "PPpp")}</p>
 		</div>
 	)
