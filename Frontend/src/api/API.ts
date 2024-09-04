@@ -1,6 +1,6 @@
 import {Message, Ticket} from "./models/Ticket.ts";
 
-const apiUrl = "http://localhost:8080/api"
+export const apiUrl = "http://localhost:8080/api"
 
 export class API {
 	public static async getTicket(id: string): Promise<Ticket> {
@@ -85,23 +85,23 @@ export class API {
 	}
 }
 
-export async function getHttpRequest(path: RequestInfo | URL, body?: {[key: string]: any}): Promise<{[key: string]: any}> {
+export async function getHttpRequest(path: RequestInfo | URL, body?: {[key: string]: any}): Promise<Response> {
 	return httpRequest(path, "GET", body);
 }
 
-export async function postHttpRequest(path: RequestInfo | URL, body?: {[key: string]: any}): Promise<{[key: string]: any}> {
+export async function postHttpRequest(path: RequestInfo | URL, body?: {[key: string]: any}): Promise<Response> {
 	return httpRequest(path, "POST", body);
 }
 
-export async function putHttpRequest(path: RequestInfo | URL, body?: {[key: string]: any}): Promise<{[key: string]: any}> {
+export async function putHttpRequest(path: RequestInfo | URL, body?: {[key: string]: any}): Promise<Response> {
 	return httpRequest(path, "PUT", body);
 }
 
-export async function delHttpRequest(path: RequestInfo | URL, body?: {[key: string]: any}): Promise<{[key: string]: any}> {
+export async function delHttpRequest(path: RequestInfo | URL, body?: {[key: string]: any}): Promise<Response> {
 	return httpRequest(path, "DELETE", body);
 }
 
-async function httpRequest(path: RequestInfo | URL, method: string, body?: any): Promise<{[key: string]: any}> {
+async function httpRequest(path: RequestInfo | URL, method: string, body?: any): Promise<Response> {
 	const response = await fetch(path, {
 		method: method,
 		headers: {
@@ -110,5 +110,5 @@ async function httpRequest(path: RequestInfo | URL, method: string, body?: any):
 		body: JSON.stringify(body),
 	});
 
-	return response.json();
+	return response;
 }

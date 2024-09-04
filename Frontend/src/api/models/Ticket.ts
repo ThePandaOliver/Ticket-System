@@ -1,14 +1,14 @@
 export interface Ticket {
-	id: number;
+	id?: number;
 	title: string;
 	status: TicketStatus;
 	messages: Message[];
 }
 
 export interface Message {
-	id: number;
+	id?: number;
 	content: string;
-	createdAt: string;
+	createdAt?: string;
 }
 
 export enum TicketStatus {
