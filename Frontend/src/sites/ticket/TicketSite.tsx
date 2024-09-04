@@ -16,6 +16,7 @@ export function TicketSite() {
 	}
 	const [loading, setLoading] = useState(true);
 	const [ticket, setTicket] = useState<Ticket>();
+	const [message, setMessage] = useState<String>("");
 
 	const navigation = useNavigate();
 
@@ -52,8 +53,9 @@ export function TicketSite() {
 					}
 				</div>
 				<div id="replyContainer">
-					<TextArea id="replyInput" placeholder="Reply message..." style={{width:"100%"}} />
-					<button style={{width:"100px", marginLeft:"auto"}}>Reply</button>
+					<TextArea id="replyInput" placeholder="Reply message..."
+							  onInput={event => setMessage(event.currentTarget.value)} style={{width:"100%"}} />
+					<button style={{width:"100px", marginLeft:"auto"}} onClick={() => sendMessage(message)}>Reply</button>
 				</div>
 			</div>
 
@@ -74,4 +76,8 @@ function createMessage(message: Message) {
 			<p style={{marginLeft:"auto", marginTop:"auto"}}>{format(date, "PPpp")}</p>
 		</div>
 	)
+}
+
+function sendMessage(messageText: String) {
+
 }
