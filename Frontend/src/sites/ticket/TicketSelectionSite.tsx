@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
 import {Link, useNavigate, useSearchParams} from "react-router-dom";
-import {API} from "../../api/API.ts";
 import {Ticket} from "../../api/models/Ticket.ts";
 import {Spinner} from "../../components/Spinner.tsx";
 import {Main} from "../../Main.tsx";
 import "../../style/sites/TicketSelectionSite.less"
+import {getTickets} from "../../api/TicketApi.ts";
 
 export function TicketSelectionSite() {
 	const [searchParams] = useSearchParams();
@@ -17,7 +17,7 @@ export function TicketSelectionSite() {
 
     useEffect(() => {
 		setLoading(true);
-		API.getTickets()
+		getTickets()
 			.then(value => setTickets(value))
 			.catch(() => navigation("/NoPage"))
 			.finally(() => setLoading(false));

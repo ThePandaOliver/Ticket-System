@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*")
 @RequestMapping("/api/tickets")
 public class TicketController {
     @Autowired
@@ -45,10 +44,10 @@ public class TicketController {
     }
 
 	@PostMapping("/{ticketId}/messages")
-	public ResponseEntity<Message> addMessageToTicket(@PathVariable Long ticketId, @RequestBody Message message) {
+	public ResponseEntity<Ticket> addMessageToTicket(@PathVariable Long ticketId, @RequestBody Message message) {
 		try {
-			Message savedMessage = ticketService.addMessageToTicket(ticketId, message);
-			return ResponseEntity.ok(savedMessage);
+			Ticket ticket = ticketService.addMessageToTicket(ticketId, message);
+			return ResponseEntity.ok(ticket);
 		} catch (IllegalArgumentException e) {
 			return ResponseEntity.notFound().build();
 		}

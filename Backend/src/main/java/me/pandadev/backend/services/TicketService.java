@@ -43,13 +43,14 @@ public class TicketService {
 		ticketRepository.deleteById(id);
 	}
 
-	public Message addMessageToTicket(Long ticketId, Message message) {
+	public Ticket addMessageToTicket(Long ticketId, Message message) {
 		Optional<Ticket> optionalTicket = ticketRepository.findById(ticketId);
 		if (optionalTicket.isPresent()) {
 			Ticket ticket = optionalTicket.get();
 			message.setCreatedAt(LocalDateTime.now());
 			message.setTicket(ticket);
-			return messageRepository.save(message);
+			messageRepository.save(message);
+			return ticket;
 		} else {
 			throw new IllegalArgumentException("Ticket not found");
 		}
