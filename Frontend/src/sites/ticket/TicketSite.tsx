@@ -1,7 +1,7 @@
 import {useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {Message, Ticket} from "../../api/models/Ticket.ts";
-import {Spinner} from "../../components/Spinner.tsx";
+import {Buffers} from "../../components/Buffers.tsx";
 import {format} from "date-fns";
 import "../../style/sites/TicketSite.less"
 import {Main} from "../../Main.tsx";
@@ -18,7 +18,7 @@ export function TicketSite() {
 	const [ticket, setTicket] = useState<Ticket>();
 	const [reply, setReply] = useState<string>("");
 
-	const [errorMessage, setErrorMessage] = useState<string>("test");
+	const [replyErrorMessage, setReplyErrorMessage] = useState<string>("");
 
 	const navigation = useNavigate();
 
@@ -37,7 +37,7 @@ export function TicketSite() {
 	if (loading) {
 		return (
 			<div style={{margin: "100px", display: "flex", justifyContent: "center"}}>
-				<Spinner/>
+				<Buffers/>
 			</div>
 		);
 	}
@@ -51,7 +51,7 @@ export function TicketSite() {
 				</div>
 				<div id="messageContainer">
 					{
-						ticket?.messages.map((message) => (createMessage(message)))
+						ticket?.messages.map((message) => (createMessageEntry(message)))
 					}
 				</div>
 				<div id="replyContainer" className="panel">
@@ -61,10 +61,9 @@ export function TicketSite() {
 							  }} value={reply} style={{width: "100%"}}/>
 					<div style={{display: "flex", flexDirection: "row"}}>
 						{
-							errorMessage.length > 0 ??
-							(<p style={{color: "red", marginTop: "4px", marginBottom: "4px"}}>ERROR: {errorMessage}</p>)
+							replyErrorMessage.length > 0 ?? (<p style={{color: "red", marginTop: "4px", marginBottom: "4px"}}>ERROR: {replyErrorMessage}</p>)
 						}
-						<button style={{width: "100px", marginLeft: "auto"}} onClick={onReplyClick}>Reply</button>
+						<button style={{width: "100px", marginLeft: "auto"}} onClick={sendReply}>Reply</button>
 					</div>
 				</div>
 			</div>
@@ -75,28 +74,31 @@ export function TicketSite() {
 		</div>
 	);
 
-	function onReplyClick() {
+	// Actions
+
+	function sendReply() {
 		if (reply.length <= 0)
 			return Promise.reject("Reply is empty");
 
-		setLoading(true);
 		postMessage(ticketId || "0", ({content: reply}))
 			.then(value => {
 				setTicket(value);
 				setReply("");
 			})
-			.catch(reason => setErrorMessage(reason || "Unknown error"))
-			.finally(() => setLoading(false));
+			.catch(reason => setReplyErrorMessage(reason || "Unknown error"));
 	}
 
-	function createMessage(message: Message) {
+	// Components
+
+	function createMessageEntry(message: Message) {
 		const date = new Date(message.createdAt || "0");
 		return (
-			<div key={message.id || "0"} className="panel"
-				 style={{display: "flex", flexDirection: "column", padding: "0 20px"}}>
-				<Markdown>
-					{message.content}
-				</Markdown>
+			<div key={message.id || "0"} className="panel" style={{display: "flex", flexDirection: "column", padding: "0 20px"}}>
+				<div style={{display: "flex", flexDirection: "row"}}>
+					<Markdown>
+						{message.content}
+					</Markdown>
+				</div>
 				<p style={{marginLeft: "auto", marginTop: "auto"}}>{format(date, "PPpp")}</p>
 			</div>
 		)

@@ -8,12 +8,15 @@ import {NoPage} from "./sites/NoPage.tsx";
 import {TicketSelectionSite} from "./sites/ticket/TicketSelectionSite.tsx";
 import {HomeSite} from "./sites/HomeSite.tsx";
 
-createRoot(document.getElementById('root')!).render(
+const container = document.getElementById('root');
+const root = createRoot(container!);
+
+root.render(
   <StrictMode>
 	  <BrowserRouter>
 		  <Routes>
 			  <Route path="/" element={<Layout />}>
-				  <Route index element={<HomeSite />} />
+				  <Route index element={<HomeSite />} />+
 				  <Route path="/tickets" element={<TicketSelectionSite />} />
 				  <Route path="/tickets/:ticketId" element={<TicketSite />} />
 				  <Route path="*" element={<NoPage />} />

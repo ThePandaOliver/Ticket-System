@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Link, useNavigate, useSearchParams} from "react-router-dom";
 import {Ticket} from "../../api/models/Ticket.ts";
-import {Spinner} from "../../components/Spinner.tsx";
+import {Buffers} from "../../components/Buffers.tsx";
 import {Main} from "../../Main.tsx";
 import "../../style/sites/TicketSelectionSite.less"
 import {getTickets} from "../../api/TicketApi.ts";
@@ -36,7 +36,7 @@ export function TicketSelectionSite() {
 			</div>
 			{loading ? (
 				<div style={{margin:"100px", display:"flex", justifyContent:"center"}}>
-					<Spinner />
+					<Buffers />
 				</div>
 				) :
 				tickets.map((ticket: Ticket) => (createTicketEntry(ticket)))
