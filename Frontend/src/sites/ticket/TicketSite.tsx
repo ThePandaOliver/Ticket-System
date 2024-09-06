@@ -98,9 +98,14 @@ export function TicketSite() {
 					<Markdown>
 						{message.content}
 					</Markdown>
+					<MoreActions />
 				</div>
 				<p style={{marginLeft: "auto", marginTop: "auto"}}>{format(date, "PPpp")}</p>
 			</div>
 		)
+
+		function MoreActions() {
+			return (<div />)
+		}
 	}
 }
