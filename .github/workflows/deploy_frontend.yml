@@ -6,7 +6,7 @@ on:
       - main
 
 permissions:
-  content: read
+  contents: read
   pages: write
   id-token: write
 
@@ -23,13 +23,14 @@ jobs:
         with:
           node-version: '20.x'
 
+      - name: Move to Frontend
+        run: cd Frontend
+
       - name: Install dependencies
         run: npm install
-        working-directory: Frontend
 
       - name: Build the React app
         run: npm run build
-        working-directory: Frontend
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
