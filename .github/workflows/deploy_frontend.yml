@@ -33,6 +33,5 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: bitovi/github-actions-react-to-github-pages@v1.2.4
-        working-directory: Frontend
         with:
           path: ./dist
