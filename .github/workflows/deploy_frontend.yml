@@ -32,6 +32,7 @@ jobs:
         working-directory: Frontend
 
       - name: Deploy to GitHub Pages
-        uses: bitovi/github-actions-react-to-github-pages@v1.2.4
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          path: ./Frontend/dist
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./Frontend/dist
