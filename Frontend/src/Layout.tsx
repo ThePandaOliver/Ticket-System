@@ -1,5 +1,5 @@
 import {NavLink, Outlet} from "react-router-dom";
-import "./style/Layout.less"
+import "./styles/Layout.less"
 import React from "react";
 
 export function Layout() {

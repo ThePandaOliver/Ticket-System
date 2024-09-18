@@ -1,4 +1,4 @@
-import "../style/components/Buffers.less";
+import "../styles/components/Buffers.less";
 
 export function Buffers() {
 	return <div className="spinner"></div>;

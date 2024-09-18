@@ -40,7 +40,7 @@ h1 {
 button,
 .button {
 	border-radius: 8px;
-	border: 1px solid transparent;
+	border: 1px solid @outline-color;
 
 	padding: 0.6em 1.2em;
 
@@ -48,7 +48,7 @@ button,
 	font-weight: 500;
 	font-family: inherit;
 
-	background-color: @button-color;
+	background-color: @primary-color;
 	cursor: pointer;
 
 	transition: border-color 0.25s;
@@ -65,10 +65,14 @@ button.active,
 }
 
 .panel {
-	box-shadow: 2px 2px 8px 2px @shadow-color;
-	border-radius: 5px;
 	display: flex;
 	box-sizing: border-box;
+
+	border: 1px solid @outline-color;
+	border-radius: 5px;
+
+	box-shadow: 2px 2px 8px 2px @shadow-color;
+	background-color: @background-color;
 }
 
 .input,
@@ -79,9 +83,9 @@ textarea {
 	box-sizing: border-box;
 
 	border-radius: 8px;
-	border: 1px solid transparent;
+	border: 1px solid @outline-color;
 
-	background-color: @button-color;
+	background-color: @primary-color;
 	font-size: 16px;
 
 	transition: border-color 0.25s;

@@ -1,6 +1,6 @@
 import {StrictMode} from 'react'
 import { createRoot } from 'react-dom/client'
-import './style/index.less'
+import './styles/index.less'
 import {Layout} from "./Layout.tsx";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {TicketSite} from "./sites/ticket/TicketSite.tsx";

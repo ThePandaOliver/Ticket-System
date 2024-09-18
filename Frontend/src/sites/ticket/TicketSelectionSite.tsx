@@ -3,7 +3,7 @@ import {Link, useNavigate, useSearchParams} from "react-router-dom";
 import {Ticket} from "../../api/models/Ticket.ts";
 import {Buffers} from "../../components/Buffers.tsx";
 import {Main} from "../../Main.tsx";
-import "../../style/sites/TicketSelectionSite.less"
+import "../../styles/sites/TicketSelectionSite.less"
 import {getTickets} from "../../api/TicketApi.ts";
 
 export function TicketSelectionSite() {
