@@ -25,11 +25,14 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        working-directory: Frontend
 
       - name: Build the React app
         run: npm run build
+        working-directory: Frontend
 
       - name: Deploy to GitHub Pages
         uses: bitovi/github-actions-react-to-github-pages@v1.2.4
+        working-directory: Frontend
         with:
-          path: ./Frontend/dist
+          path: ./dist
