@@ -8,8 +8,6 @@ import {Main} from "../../Main.tsx";
 import {TextArea} from "../../components/TextArea.tsx";
 import {MarkdownView} from "../../components/MarkdownView.tsx";
 import {getTicket, postMessage} from "../../api/TicketApi.ts";
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import {Menu} from "../../components/Menu.tsx";
 
 export function TicketSite() {
 	const {ticketId} = useParams();
@@ -97,19 +95,9 @@ export function TicketSite() {
 					<MarkdownView>
 						{message.content}
 					</MarkdownView>
-					<MoreActions />
 				</div>
 				<p style={{marginLeft: "auto", marginTop: "auto"}}>{format(date, "PPpp")}</p>
 			</div>
 		)
-
-		function MoreActions() {
-			return (
-				<div style={{marginLeft: "auto"}}>
-					<MoreVertIcon />
-					<Menu isOpen={true} />
-				</div>
-			)
-		}
 	}
 }
