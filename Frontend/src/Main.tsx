@@ -1,14 +1,11 @@
-import {StrictMode} from 'react'
-import { createRoot } from 'react-dom/client'
-import "./styles/index.less"
-import {Layout} from "./Layout.tsx";
+import {Fragment, StrictMode} from "react"
+import { createRoot } from "react-dom/client"
+import "./index.less"
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {TicketSite} from "./sites/ticket/TicketSite.tsx";
-import {NoPage} from "./sites/NoPage.tsx";
-import {TicketSelectionSite} from "./sites/ticket/TicketSelectionSite.tsx";
-import {HomeSite} from "./sites/HomeSite.tsx";
+import TicketOverviewPage from "./pages/TicketOverviewPage";
+import Layout from "./Layout.tsx";
 
-const container = document.getElementById('root');
+const container = document.getElementById("root");
 const root = createRoot(container!);
 
 root.render(
@@ -16,10 +13,8 @@ root.render(
 	  <BrowserRouter>
 		  <Routes>
 			  <Route path="/" element={<Layout />}>
-				  <Route index element={<HomeSite />} />+
-				  <Route path="/tickets" element={<TicketSelectionSite />} />
-				  <Route path="/tickets/:ticketId" element={<TicketSite />} />
-				  <Route path="*" element={<NoPage />} />
+				  <Route index element={<Fragment />} />
+				  <Route path="/ticket" element={<TicketOverviewPage />} />
 			  </Route>
 		  </Routes>
 	  </BrowserRouter>

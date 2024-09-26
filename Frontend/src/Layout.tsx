@@ -1,15 +1,21 @@
 import {NavLink, Outlet} from "react-router-dom";
-import "./styles/Layout.less"
-import React from "react";
+import {Fragment} from "react";
+import "./Layout.less"
 
-export function Layout() {
+export default function Layout() {
 	return (
-		<React.Fragment>
-			<nav className="navigationPanel">
-				<NavLink to="/" className="button navigationButton">Home</NavLink>
-				<NavLink to="/tickets" className="button navigationButton">Tickets</NavLink>
+		<Fragment>
+			<nav className="navContainer">
+				<NavButton path="/" name="Dashboard" />
+				<NavButton path="/ticket" name="Tickets" />
 			</nav>
 			<Outlet />
-		</React.Fragment>
+		</Fragment>
+	)
+}
+
+function NavButton({path, name}: {path: string, name: string}) {
+	return (
+		<NavLink to={path} className="navButton">{name}</NavLink>
 	)
 }

@@ -1,0 +1,35 @@
+@hover-background-highlight: rgba(255, 255, 255, 0.35);
+
+.navContainer {
+	background-color: #333333;
+	border-bottom: 3px solid #262626;
+
+	box-shadow: 0 -2px 10px 4px rgba(0, 0, 0, 0.75);
+
+	display: flex;
+	box-sizing: border-box;
+
+	padding: 6px;
+
+	flex-direction: row;
+	gap: 4px;
+	justify-content: center;
+}
+
+.navButton {
+	background-color: transparent;
+	color: unset;
+	text-decoration: unset;
+	box-sizing: border-box;
+
+	border-radius: 5px;
+
+	padding: 6px 10px;
+
+	position: relative;
+	transition: background-color 250ms ease-in-out;
+}
+
+.navButton:hover {
+	background-color: @hover-background-highlight;
+}
