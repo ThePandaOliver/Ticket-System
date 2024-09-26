@@ -1,14 +1,10 @@
-export interface Ticket {
+import Message from "./Message.ts";
+
+export default interface Ticket {
 	id?: number;
 	title: string;
 	status: TicketStatus;
 	messages: Message[];
-}
-
-export interface Message {
-	id?: number;
-	content: string;
-	createdAt?: string;
 }
 
 export enum TicketStatus {

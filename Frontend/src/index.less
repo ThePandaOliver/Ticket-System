@@ -1,4 +1,7 @@
 @background-color: #404040;
+@background-color-dark: #333333;
+@dark-edge: #262626;
+@shadow-color: rgba(0, 0, 0, 0.75);
 
 html {
 	background-color: @background-color;
@@ -8,4 +11,15 @@ html {
 
 body {
 	margin: 0;
+}
+
+.panel {
+	background-color: @background-color-dark;
+
+	border-radius: 5px;
+	border-left: @dark-edge solid;
+	border-bottom: @dark-edge solid;
+	border-width: 2px;
+
+	box-shadow: 0 0 10px -2px @shadow-color;
 }
