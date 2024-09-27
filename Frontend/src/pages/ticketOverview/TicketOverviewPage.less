@@ -1,0 +1,48 @@
+@import "../../index";
+
+.ticketOverviewPage {
+	display: flex;
+	flex-direction: column;
+
+	gap: 30px;
+	padding: 20px 100px;
+}
+
+.ticketListContainer {
+	display: flex;
+	box-sizing: border-box;
+	flex-direction: column;
+
+	gap: 20px;
+}
+
+.ticketEntry {
+	color: unset;
+	text-decoration: unset;
+
+	padding: 5px 15px;
+}
+
+.actionBar {
+	display: flex;
+	flex-direction: row;
+
+	justify-content: center;
+
+	gap: 10px;
+	padding: 10px 15px;
+}
+
+.searchInput {
+	all: unset;
+	width: 100%;
+	font-size: 18px;
+
+	border-bottom: gray solid 2px;
+
+	transition: border-bottom-color 250ms ease-in-out;
+}
+
+.searchInput:focus {
+	border-bottom-color: white;
+}
