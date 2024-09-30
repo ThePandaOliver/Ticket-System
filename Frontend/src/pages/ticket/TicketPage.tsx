@@ -41,6 +41,7 @@ export default function TicketPage() {
 					ticket.messages.map(value => (<MessageEntry key={value.id} message={value} />))
 				}
 			</div>
+			{/* Todo Make markdown preview support */}
 			<div className="panel replyBar">
 				<span contentEditable={true} className="replyInput" data-placeholder={"Reply..."} />
 			</div>
