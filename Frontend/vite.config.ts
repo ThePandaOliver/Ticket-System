@@ -6,7 +6,7 @@ export default defineConfig({
 	plugins: [react()],
 	optimizeDeps: {
 		include: [
-			"@khanacademy/simple-markdown"
+			"marked"
 		]
 	}
 })

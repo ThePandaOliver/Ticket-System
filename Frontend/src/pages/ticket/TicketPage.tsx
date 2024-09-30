@@ -25,7 +25,7 @@ export default function TicketPage() {
 			},
 			{
 				id: 3,
-				content: "# Hello World\n\nThis is a **markdown** text rendered in *React*.\n\n - Item 1\n - Item 2\n - Item 3\n\n\`\`\`javascript\nconsole.log('Hello, world!');\n\`\`\`",
+				content: "# Hello World\nThis is a **markdown** text rendered in *React*.\n\n - Item 1\n - Item 2\n - Item 3\n\n\`\`\`javascript\nconsole.log('Hello, world!');\n\`\`\`",
 				createdAt: "0"
 			}
 		]
