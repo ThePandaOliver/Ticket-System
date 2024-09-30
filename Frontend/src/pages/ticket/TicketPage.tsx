@@ -4,6 +4,7 @@ import Message from "../../api/models/Message.ts";
 import {format} from "date-fns";
 import "./TicketPage.less"
 import Ticket, {TicketStatus} from "../../api/models/Ticket.ts";
+import Markdown from "../../components/markdown/Markdown.tsx";
 
 export default function TicketPage() {
 	const {id} = useParams()
@@ -24,7 +25,7 @@ export default function TicketPage() {
 			},
 			{
 				id: 3,
-				content: "# I dont know if my Markdown is working, \n## could you tell me if it is.",
+				content: "# Hello World\n\nThis is a **markdown** text rendered in *React*.\n\n - Item 1\n - Item 2\n - Item 3\n\n\`\`\`javascript\nconsole.log('Hello, world!');\n\`\`\`",
 				createdAt: "0"
 			}
 		]
@@ -50,8 +51,7 @@ export default function TicketPage() {
 		return (
 			<div className="panel messageEntry">
 				<div style={{display: "flex"}}>
-					<p style={{width: "100%"}}>{message.content}</p>
-					<p style={{color: "grey"}}>{message.id}</p>
+					<Markdown>{message.content}</Markdown>
 				</div>
 				<p style={{textAlign: "end", color: "grey"}}>{format(new Date(message.createdAt ?? "0"), "MM/dd/yyyy HH:mm aa")}</p>
 			</div>
