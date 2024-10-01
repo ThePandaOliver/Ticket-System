@@ -1,9 +1,11 @@
+@import "src/index";
+
 .ticketPage {
 	display: flex;
 	flex-direction: column;
 
 	gap: 30px;
-	padding: 20px 100px;
+	padding: 20px 350px;
 }
 
 .ticketHeader {
@@ -38,16 +40,21 @@
 	width:  100%;
 	height: fit-content;
 
-	padding: 10px 15px;
+	padding: 10px 10px;
 }
 
 .replyInput {
 	all: unset;
 
-	font-size: 18px;
 	width: 100%;
+	padding: 5px 5px;
+	border-radius: 5px;
 
 	word-wrap: break-word;
+	resize: vertical;
+	outline: solid 1px @edge;
+}
 
-	content: "test";
+.replyInput:focus {
+	outline: solid 1px white;
 }

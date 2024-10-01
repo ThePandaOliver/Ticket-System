@@ -1,5 +1,6 @@
-@background-color: #404040;
-@background-color-dark: #333333;
+@background-color: #191919;
+@background-color-dark: #0f0f0f;
+@edge: #4b4b4b;
 @dark-edge: #262626;
 @shadow-color: rgba(0, 0, 0, 0.75);
 
@@ -19,12 +20,10 @@ body {
 // Components
 
 .panel {
-	background-color: @background-color-dark;
+	background-color: @background-color;
 
 	border-radius: 5px;
-	border-left: @dark-edge solid;
-	border-bottom: @dark-edge solid;
-	border-width: 2px;
+	border: @edge solid 1px;
 
 	box-shadow: 0 0 10px -2px @shadow-color;
 }
