@@ -1,11 +1,13 @@
-@background-color: #191919;
-@background-color-dark: #0f0f0f;
+@background-color: #1a1a1a;
+@background-color-dark: #0d0d0d;
 @edge: #4b4b4b;
 @dark-edge: #262626;
 @shadow-color: rgba(0, 0, 0, 0.75);
 
 @button-background-color-active: rgba(255, 255, 255, 0.15);
 @button-background-color-hover: rgba(255, 255, 255, 0.10);
+
+@border-radius: 5px;
 
 html {
 	background-color: @background-color;
@@ -20,12 +22,10 @@ body {
 // Components
 
 .panel {
-	background-color: @background-color;
+	background-color: @background-color-dark;
 
-	border-radius: 5px;
+	border-radius: @border-radius;
 	border: @edge solid 1px;
-
-	box-shadow: 0 0 10px -2px @shadow-color;
 }
 
 .iconButton {
