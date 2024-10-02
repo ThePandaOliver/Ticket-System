@@ -28,9 +28,9 @@
 	padding: 0 10px;
 }
 
-.replyBar {
+.reply {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 
 	position: sticky;
 	bottom: 0;
@@ -39,12 +39,15 @@
 	box-sizing: border-box;
 	width:  100%;
 	height: fit-content;
-
-	padding: 10px 10px;
 }
 
-.replyInput {
+.inputContainer {
+	padding: 10px;
+}
+
+textarea {
 	all: unset;
+	box-sizing: border-box;
 
 	width: 100%;
 	padding: 5px 5px;
@@ -52,9 +55,9 @@
 
 	word-wrap: break-word;
 	resize: vertical;
-	outline: solid 1px @edge;
+	border: solid 1px @edge;
 }
 
-.replyInput:focus {
-	outline: solid 1px white;
+textarea:focus {
+	border: solid 1px white;
 }

@@ -42,8 +42,12 @@ export default function TicketPage() {
 				}
 			</div>
 			{/* Todo Make markdown preview support */}
-			<div className="panel replyBar">
-				<textarea className="replyInput" placeholder={"Reply..."} rows={4}/>
+			<div className="panel reply">
+				<div className="actionBar">
+				</div>
+				<div className="inputContainer">
+					<textarea placeholder={"Reply..."} rows={4}/>
+				</div>
 			</div>
 		</div>
 	)
