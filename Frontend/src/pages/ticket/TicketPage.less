@@ -32,20 +32,57 @@
 	display: flex;
 	flex-direction: column;
 
-	position: sticky;
-	bottom: 0;
-	left: 0;
+	position: relative;
 
 	box-sizing: border-box;
 	width:  100%;
 	height: fit-content;
 }
 
-.inputContainer {
+.reply.fixed-bottom {
+	box-shadow: 0 0 5px 5px @shadow-color;
+}
+
+.replyActionBar {
+	display: flex;
+	flex-direction: row;
+
+	background-color: @background-color;
+
+	border-radius: @border-radius @border-radius 0 0;
+	border-bottom: @edge solid 1px;
+
+	padding: 5px;
+}
+
+.replyViewButtonContainer {
+	display: flex;
+	flex-direction: row;
+	gap: 1px;
+
+	background-color: @edge;
+
+	border-radius: @border-radius;
+	border: 1px solid @edge;
+
+	overflow: clip;
+}
+
+.replyViewButton {
+	position: relative;
+	padding: 12px 8px;
+	background-color: @background-color;
+
+	&[data-selected] {
+		background-color: @background-color-dark;
+	}
+}
+
+.replyInputContainer {
 	padding: 10px;
 }
 
-textarea {
+.replyInputField {
 	all: unset;
 	box-sizing: border-box;
 
@@ -58,6 +95,6 @@ textarea {
 	border: solid 1px @edge;
 }
 
-textarea:focus {
+.replyInputField:focus {
 	border: solid 1px white;
 }

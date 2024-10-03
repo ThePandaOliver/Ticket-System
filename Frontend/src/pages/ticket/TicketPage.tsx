@@ -5,6 +5,7 @@ import {format} from "date-fns";
 import "./TicketPage.less"
 import Ticket, {TicketStatus} from "../../api/models/Ticket.ts";
 import Markdown from "../../components/markdown/Markdown.tsx";
+import {Tab, TabList, TabPanel, Tabs} from "react-aria-components";
 
 export default function TicketPage() {
 	const {id} = useParams()
@@ -41,14 +42,7 @@ export default function TicketPage() {
 					ticket.messages.map(value => (<MessageEntry key={value.id} message={value} />))
 				}
 			</div>
-			{/* Todo Make markdown preview support */}
-			<div className="panel reply">
-				<div className="actionBar">
-				</div>
-				<div className="inputContainer">
-					<textarea placeholder={"Reply..."} rows={4}/>
-				</div>
-			</div>
+			<ReplyContainer />
 		</div>
 	)
 
@@ -59,6 +53,32 @@ export default function TicketPage() {
 					<Markdown>{message.content}</Markdown>
 				</div>
 				<p style={{textAlign: "end", color: "grey"}}>{format(new Date(message.createdAt ?? "0"), "MM/dd/yyyy HH:mm aa")}</p>
+			</div>
+		)
+	}
+
+	function ReplyContainer() {
+		const [replyMessage, setReplyMessage] = useState("")
+
+		// Todo Make markdown preview support
+		return (
+			<div className="panel reply">
+				<Tabs>
+					<div className="replyActionBar">
+						<TabList className="replyViewButtonContainer">
+							<Tab id="write" className="replyViewButton">Write</Tab>
+							<Tab id="preview" className="replyViewButton">Preview</Tab>
+						</TabList>
+					</div>
+					<TabPanel id="write" className="replyInputContainer">
+						<textarea className="replyInputField" placeholder={"Reply..."} rows={4}
+								  onInput={event => setReplyMessage(event.currentTarget.value)} value={replyMessage}
+								  inputMode="text"/>
+					</TabPanel>
+					<TabPanel id="preview" className="messageEntry">
+						<Markdown>{replyMessage}</Markdown>
+					</TabPanel>
+				</Tabs>
 			</div>
 		)
 	}
