@@ -6,6 +6,7 @@ import "./TicketPage.less"
 import Ticket, {TicketStatus} from "../../api/models/Ticket.ts";
 import Markdown from "../../components/markdown/Markdown.tsx";
 import {Tab, TabList, TabPanel, Tabs} from "react-aria-components";
+import Divider from "../../components/divider/Divider.tsx";
 
 export default function TicketPage() {
 	const {id} = useParams()
@@ -34,8 +35,9 @@ export default function TicketPage() {
 
 	return (
 		<div className="ticketPage">
-			<div className="panel ticketHeader">
+			<div className="ticketHeader">
 				<h2>{ticket.title}</h2>
+				<Divider direction="horizontal" />
 			</div>
 			<div className="messageListContainer">
 				{
