@@ -2,7 +2,6 @@ import "./TicketOverviewPage.less"
 import {Link} from "react-router-dom";
 import Ticket, {TicketStatus} from "../../api/models/Ticket.ts";
 import {useState} from "react";
-import {MagnifyingGlassIcon} from "@heroicons/react/16/solid";
 
 export default function TicketOverviewPage() {
 	const [tickets, setTickets] = useState<Ticket[]>([
@@ -33,7 +32,7 @@ export default function TicketOverviewPage() {
 				<input className="searchInput" placeholder="Search..."
 					   value={search} onInput={event => setSearch(event.currentTarget.value)}/>
 				<button onClick={runSearch} className="iconButton" style={{width: "22px", height: "22px"}}>
-					<MagnifyingGlassIcon height={"100%"} width={"100%"}></MagnifyingGlassIcon>
+					{/*<MagnifyingGlassIcon height={"100%"} width={"100%"}></MagnifyingGlassIcon>*/}
 				</button>
 			</div>
 			<div className="ticketListContainer">

@@ -5,7 +5,6 @@ import {format} from "date-fns";
 import "./TicketPage.less"
 import Ticket, {TicketStatus} from "../../api/models/Ticket.ts";
 import Markdown from "../../components/markdown/Markdown.tsx";
-import {Tab, TabList, TabPanel, Tabs} from "react-aria-components";
 import Divider from "../../components/divider/Divider.tsx";
 
 export default function TicketPage() {
@@ -65,22 +64,22 @@ export default function TicketPage() {
 		// Todo Make markdown preview support
 		return (
 			<div className="panel reply">
-				<Tabs>
-					<div className="replyActionBar">
-						<TabList className="replyViewButtonContainer">
-							<Tab id="write" className="replyViewButton">Write</Tab>
-							<Tab id="preview" className="replyViewButton">Preview</Tab>
-						</TabList>
-					</div>
-					<TabPanel id="write" className="replyInputContainer">
-						<textarea className="replyInputField" placeholder={"Reply..."} rows={4}
-								  onInput={event => setReplyMessage(event.currentTarget.value)} value={replyMessage}
-								  inputMode="text"/>
-					</TabPanel>
-					<TabPanel id="preview" className="messageEntry">
-						<Markdown>{replyMessage}</Markdown>
-					</TabPanel>
-				</Tabs>
+				{/*<Tabs>*/}
+				{/*	<div className="replyActionBar">*/}
+				{/*		<TabList className="replyViewButtonContainer">*/}
+				{/*			<Tab id="write" className="replyViewButton">Write</Tab>*/}
+				{/*			<Tab id="preview" className="replyViewButton">Preview</Tab>*/}
+				{/*		</TabList>*/}
+				{/*	</div>*/}
+				{/*	<TabPanel id="write" className="replyInputContainer">*/}
+				{/*		<textarea className="replyInputField" placeholder={"Reply..."} rows={4}*/}
+				{/*				  onInput={event => setReplyMessage(event.currentTarget.value)} value={replyMessage}*/}
+				{/*				  inputMode="text"/>*/}
+				{/*	</TabPanel>*/}
+				{/*	<TabPanel id="preview" className="messageEntry">*/}
+				{/*		<Markdown>{replyMessage}</Markdown>*/}
+				{/*	</TabPanel>*/}
+				{/*</Tabs>*/}
 			</div>
 		)
 	}
