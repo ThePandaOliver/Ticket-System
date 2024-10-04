@@ -5,7 +5,7 @@ import {format} from "date-fns";
 import "./TicketPage.less"
 import Ticket, {TicketStatus} from "../../api/models/Ticket.ts";
 import Markdown from "../../components/markdown/Markdown.tsx";
-import Divider from "../../components/divider/Divider.tsx";
+import {Divider} from "@mui/material";
 
 export default function TicketPage() {
 	const {id} = useParams()
@@ -36,7 +36,7 @@ export default function TicketPage() {
 		<div className="ticketPage">
 			<div className="ticketHeader">
 				<h2>{ticket.title}</h2>
-				<Divider direction="horizontal" />
+				<Divider />
 			</div>
 			<div className="messageListContainer">
 				{
